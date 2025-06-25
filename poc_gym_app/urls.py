@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/v1/users/', include('users.urls')),
     # Classes & Bookings API
     path('api/v1/classes/', include('classes.urls')),
+    path('api/v1/bookings/', include('bookings.urls')),
     # Dashboard API (if dashboard is now API-based)
     path('api/v1/dashboard/', include('dashboard.urls')),
     # Add other app APIs as needed

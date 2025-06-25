@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GymClass, Booking
+from .models import GymClass
 
 class GymClassSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,12 +17,3 @@ class GymClassSerializer(serializers.ModelSerializer):
         if value.role != 'coach':
             raise serializers.ValidationError("Assigned user is not a coach.")
         return value
-
-
-class BookingSerializer(serializers.ModelSerializer):
-    member = serializers.ReadOnlyField(source='member.username')
-
-    class Meta:
-        model = Booking
-        fields = ['id', 'member', 'gym_class', 'timestamp', 'attended']
-        read_only_fields = ['timestamp', 'member']

@@ -1,13 +1,10 @@
 from django.urls import path
 from .views import (
-    ClassCreateView, ClassListView, ClassDetailView,
-    BookingCreateView, BookingListView
+    ClassCreateView, ClassListView, ClassDetailView
 )
 
 urlpatterns = [
-    path('classes/', ClassListView.as_view(), name='class-list'),
-    path('classes/create/', ClassCreateView.as_view(), name='class-create'),
-    path('classes/<int:pk>/', ClassDetailView.as_view(), name='class-detail'),
-    path('bookings/', BookingListView.as_view(), name='booking-list'),
-    path('bookings/create/', BookingCreateView.as_view(), name='booking-create'),
-]
+    path('', ClassListView.as_view(), name='class-list'),                    # GET /api/v1/classes/
+    path('create/', ClassCreateView.as_view(), name='class-create'),         # POST /api/v1/classes/create/
+    path('<int:pk>/', ClassDetailView.as_view(), name='class-detail'),       # GET/PUT/DELETE /api/v1/classes/<id>/
+   ]

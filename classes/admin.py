@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, GymClass
+from .models import GymClass
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -22,4 +22,3 @@ class ClassAdmin(admin.ModelAdmin):
         return request.user.role != 'coach'
 
 admin.site.register(GymClass, ClassAdmin)
-admin.site.register(Booking)

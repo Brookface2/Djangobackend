@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'classes',
+    'bookings',
     'forms',
     'notifications',
     'analytics',
@@ -83,14 +84,21 @@ WSGI_APPLICATION = 'poc_gym_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gymapp_db',
+#         'USER': 'gymadmin',
+#         'PASSWORD': 'KatDawg90',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gymapp_db',
-        'USER': 'gymadmin',
-        'PASSWORD': 'KatDawg90',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

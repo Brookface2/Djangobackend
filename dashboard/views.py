@@ -1,27 +1,9 @@
-from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
-from users.models import User  # use your actual user model import
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
-@login_required
-def dashboard_redirect_view(request):
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def dashboard_role_view(request):
     user = request.user
-    if user.role == 'admin':
-        return redirect('admin_dashboard')
-    elif user.role == 'coach':
-        return redirect('coach_dashboard')
-    elif user.role == 'member':
-        return redirect('member_dashboard')
-    else:
-        return render(request, 'dashboard/unknown_role.html')
-
-@login_required
-def admin_dashboard_view(request):
-    return render(request, 'dashboard/admin_dashboard.html')
-
-@login_required
-def coach_dashboard_view(request):
-    return render(request, 'dashboard/coach_dashboard.html')
-
-@login_required
-def member_dashboard_view(request):
-    return render(request, 'dashboard/member_dashboard.html')
+    return Response({"role": user.role})
